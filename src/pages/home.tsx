@@ -1,14 +1,12 @@
 import {createRoute } from '@tanstack/react-router'
-import {rootRoute} from '../routing/route'
+import {authLayoutRoute} from '../routing/_auth'
 import { userAuthState } from '../storing/store'
 
 export const homeRoute = createRoute({
-    getParentRoute: () => rootRoute,
+    getParentRoute: () => authLayoutRoute,
     path:'/home',
     component:()=>{
-
         const username = userAuthState((state)=> state.username);
-
 
         return (
         <div style={{ padding: '20px' }}>

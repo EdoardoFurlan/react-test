@@ -1,8 +1,8 @@
 import { createRoute, redirect } from '@tanstack/react-router'
-import { rootRoute } from '../routing/route'
+import { authLayoutRoute } from '../routing/_auth'
 
 export const defaultRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => authLayoutRoute,
   path: '/',
   beforeLoad: () => {
     throw redirect({

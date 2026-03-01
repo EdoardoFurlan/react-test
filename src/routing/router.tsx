@@ -3,12 +3,20 @@ import {rootRoute} from './route'
 import {loginRoute} from '../pages/login'
 import {homeRoute} from '../pages/home'
 import {defaultRoute} from '../pages/default'
+import {authLayoutRoute} from '../routing/_auth'
+
+
+
+const authTree = authLayoutRoute.addChildren([
+  defaultRoute,
+  homeRoute
+])
+
 
 // 1. Creiamo l'albero delle rotte
 const routeTree = rootRoute.addChildren([
-  defaultRoute,
   loginRoute,
-  homeRoute,
+  authTree
 ])
 
 // 2. Creiamo l'istanza del router
