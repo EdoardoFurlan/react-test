@@ -1,16 +1,22 @@
-import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
+import { createRootRoute, Outlet, Link,  useNavigate } from "@tanstack/react-router";
 import { userAuthState } from '../storing/store'
 
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuList,
 } from "@/components/ui/navigation-menu"
+
 
 
 export const rootRoute = createRootRoute({
     component: () => {
         const { username, logout } = userAuthState();
+        const navigate = useNavigate();
+        const handleLogout = () => {
+            logout();
+            navigate({ to: '/login' })
+        }
 
         return(
         <>
@@ -30,7 +36,7 @@ export const rootRoute = createRootRoute({
                 Ciao, <strong>{username}</strong>
               </span>
               <button 
-                onClick={() => logout()} 
+                onClick={() => handleLogout()} 
                 className="text-destructive hover:underline text-sm"
               >
                 Logout

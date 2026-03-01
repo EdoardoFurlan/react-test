@@ -6,7 +6,7 @@ export const defaultRoute = createRoute({
   path: '/',
   beforeLoad: () => {
     throw redirect({
-      to: '/login',
+      to: '/home',
     })
   },
 })
