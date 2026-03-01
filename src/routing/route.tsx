@@ -11,7 +11,7 @@ import {
 
 export const rootRoute = createRootRoute({
     component: () => {
-        const { username, logout } = userAuthState();
+        const { getUserData, logout } = userAuthState();
         const navigate = useNavigate();
         const handleLogout = () => {
             logout();
@@ -30,10 +30,10 @@ export const rootRoute = createRootRoute({
           </NavigationMenu>
 
           {/* Logica Condizionale */}
-          {username && (
+          {getUserData()?.username && (
             <div className="flex items-center gap-4">
               <span className="text-sm text-muted-foreground">
-                Ciao, <strong>{username}</strong>
+                Ciao, <strong>{getUserData()?.username}</strong>
               </span>
               <button 
                 onClick={() => handleLogout()} 
