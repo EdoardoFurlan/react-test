@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware'
 interface AuthState {
     username: string
     setUsername: (name:string) => void
+    logout: () => void  
 }
 
 export const userAuthState = create<AuthState>()(
@@ -11,9 +12,13 @@ export const userAuthState = create<AuthState>()(
         (set)=>({
             username:'',
             setUsername:(name) => set({username:name}),
-    }),
-    {
-        name :'auth-storage'
-    }
-)
+            logout: () => {
+                set({ username: '' })
+                localStorage.removeItem('auth-storage');
+            }
+        }),
+        {
+            name :'auth-storage'
+        }
+    ), 
 )

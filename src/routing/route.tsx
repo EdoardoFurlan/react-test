@@ -1,11 +1,49 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
+import { userAuthState } from '../storing/store'
+
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu"
+
 
 export const rootRoute = createRootRoute({
-    component: () => (
+    component: () => {
+        const { username, logout } = userAuthState();
+
+        return(
         <>
-            {/*TODO NAVBAR*/}
-            <hr/>
-            <Outlet></Outlet>
-        </>
-    ),
+            <header className="border-b p-4 flex justify-between items-center">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link to="/" className="font-bold">MyAPP 🚀</Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Logica Condizionale */}
+          {username && (
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-muted-foreground">
+                Ciao, <strong>{username}</strong>
+              </span>
+              <button 
+                onClick={() => logout()} 
+                className="text-destructive hover:underline text-sm"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </header>
+
+        <main className="p-4">
+          <Outlet />
+        </main>
+      </>
+        )
+
+    },
 })
