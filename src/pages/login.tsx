@@ -1,5 +1,5 @@
 import {createRoute, useNavigate } from '@tanstack/react-router'
-import {rootRoute} from './route'
+import {rootRoute} from '../routing/route'
 import type React from 'react';
 
 export const loginRoute = createRoute({

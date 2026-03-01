@@ -1,8 +1,8 @@
 import { createRouter } from "@tanstack/react-router";
 import {rootRoute} from './route'
-import {loginRoute} from './login'
-import {homeRoute} from './home'
-import {defaultRoute} from './default'
+import {loginRoute} from '../pages/login'
+import {homeRoute} from '../pages/home'
+import {defaultRoute} from '../pages/default'
 
 // 1. Creiamo l'albero delle rotte
 const routeTree = rootRoute.addChildren([
