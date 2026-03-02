@@ -24,7 +24,7 @@ export const rootRoute = createRootRoute({
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to="/" className="font-bold">MyAPP 🚀</Link>
+                <Link to="/" className="font-bold">My-react-App 🚀</Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

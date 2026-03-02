@@ -6,7 +6,7 @@ export const homeRoute = createRoute({
     getParentRoute: () => authLayoutRoute,
     path:'/home',
     component:()=>{
-        const username = userAuthState((state)=> state.username);
+        const username = userAuthState((state)=> state.getUserData()?.username) || 'Guest';
 
         return (
         <div style={{ padding: '20px' }}>
